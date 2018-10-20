@@ -1,0 +1,3 @@
+#!/bin/bash
+# Recursivley delete empty directories
+find . -type d -empty -delete

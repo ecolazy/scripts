@@ -1,0 +1,10 @@
+#!/bin/bash
+# Make letter
+
+# Assign current date to invoiceDate
+invoiceDate=$(date '+%Y%m%d%H%M%S')
+
+cp $HOME/Processing/Template/Template_letter.md $HOME/Processing/Letter/Letter_$invoiceDate.md
+
+vim $HOME/Processing/Letter/Letter_$invoiceDate.md
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+# This unmounts a usb flash drive
+
+umount /mnt
+cryptsetup luksClose thing

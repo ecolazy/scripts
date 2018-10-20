@@ -1,0 +1,6 @@
+#!/bin/bash
+# Loop over each file in directory and run standard input
+for file in *
+do
+exec  ~/.scripts/compile
+done

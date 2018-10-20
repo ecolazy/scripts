@@ -1,0 +1,3 @@
+#!/bin/bash
+# Arp
+arp -a

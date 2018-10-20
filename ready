@@ -1,0 +1,11 @@
+#!/bin/bash
+# Compile xelatec document
+# Usage, template must be in directory, specify source (wither yml or md file) with standard input.
+
+Filename=$1
+Boilerplate=`echo $Filename | gawk -F_ '{ print $1}'`
+documentName=`echo $Filename | gawk -F. '{ print $1}'`
+pandoc -N -o $HOME/Ready/$Boilerplate/$documentName.pdf  --pdf-engine=xelatex --template=$HOME/Processing/Boilerplate/$Boilerplate.tex $1
+
+
+notify-send "$documentName.pdf ready"

@@ -1,0 +1,4 @@
+#!/bin/bash
+# Download website
+
+wget --limit-rate=200k --no-clobber --convert-links --recursive --random-wait -r -p -E -e robots=off -U mozilla $1

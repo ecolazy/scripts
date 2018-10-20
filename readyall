@@ -1,0 +1,11 @@
+#!/bin/bash
+# Compile xelatec document
+# Loop over each file in directory and compile using template.
+for file in *
+do
+Filename=$file
+Boilerplate=`echo $Filename | gawk -F_ '{ print $1}'`
+documentName=`echo $Filename | gawk -F. '{ print $1}'`
+pandoc -N -o $HOME/Ready/$Boilerplate/$documentName.pdf  --pdf-engine=xelatex --template=$HOME/Processing/Boilerplate/$Boilerplate.tex $Filename
+
+done

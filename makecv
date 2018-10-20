@@ -1,0 +1,10 @@
+#!/bin/bash
+# Make Cv
+
+# Assign current date to invoiceDate
+Date=$(date '+%Y%m%d%H%Mi%S')
+
+cp $HOME/Processing/Template/Template_cv.yml $HOME/Processing/Cv/Cv_$Date.yml
+
+vim $HOME/Processing/Cv/Cv_$Date.yml
+

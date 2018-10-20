@@ -1,0 +1,3 @@
+#!/bin/bash
+# Secure shell into bkp_svr
+ssh pi@192.168.1.199

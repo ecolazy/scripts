@@ -1,0 +1,15 @@
+#!/bin/bash
+# Symlink dotfiles
+ln -s ~/.config/ranger/rc.conf ~/.dotfiles/rc.conf
+ln -s ~/.config/ranger/rifle.conf ~/.dotfiles/rile.conf
+ln -s ~/.config/ranger/config ~/.dotfiles/config
+ln -s ~/.config/ranger/rc.conf ~/.dotfiles/rc.conf
+ln -s ~/.vimrc ~/.dotfiles/.vimrc
+ln -s ~/.profile ~/.dotfiles/.profile
+ln -s ~/.Xresources ~/.dotfiles/.Xresorces
+ln -s ~/.Xdefaults ~/.dotfiles/.Xdefaults
+
+
+
+
+

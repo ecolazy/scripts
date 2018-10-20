@@ -1,0 +1,38 @@
+#!/bin/bash
+# Remap bank statement to date list
+
+# get first line of file
+startDate=$(awk 'BEGIN{FS=","} NR==1 {print $1}' $1)
+
+# Get last line of file
+endDate=$(awk 'BEGIN{FS=","} END{print $1}' $1)
+
+changeStart=$(echo $startDate | tr '/' '-')
+changeEnd=$(echo $endDate | tr -d '/' '-')
+
+
+
+Start=$(echo $changeStart | tr -d '"')
+End=$(echo $changeEnd | tr -d '"')
+
+#echo $startDelete
+#echo $endDelete
+# Generate date list
+
+while ! [[ $Start > $End ]]; do
+    echo $Start
+    Start=$(date -d "$Start + 1 day" +%F)
+done
+
+
+# Asign date list to variable
+dateList=$(datelist)
+echo $dateList
+# Create list file
+echo "$dateList" >  $PWD/1_list.csv
+
+# Create dates file by quoting each line
+awk '{ print "\""$0"\""}' $PWD/1_list.csv > $PWD/2_dates.csv
+
+# Merge data
+ awk 'NR==FNR{a[$1]=$2","$3","$4","$5","$6","$7 ;next}{print $0","a[$1];}' FS="," $2 $PWD/2_dates.csv > $PWD/3_merge.csv

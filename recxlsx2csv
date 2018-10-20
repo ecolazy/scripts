@@ -1,0 +1,3 @@
+#!/bin/bash
+# Recursivley convert xlsx to csv
+find . -iname '*.xlsx' -execdir  libreoffice --convert-to csv {} +

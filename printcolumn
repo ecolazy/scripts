@@ -1,0 +1,4 @@
+#!/bin/bash
+# Print specific csv column
+
+awk -F "\t" '{print $1}' input.csv

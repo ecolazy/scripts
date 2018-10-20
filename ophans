@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+# Remove unused dependencies
+yaourt -Qtd

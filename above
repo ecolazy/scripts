@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+# Monitor above
+xrandr --output VGA1 --auto --above LVDS1

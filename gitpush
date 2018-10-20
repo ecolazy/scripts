@@ -1,0 +1,17 @@
+#!/bin/bash
+# Generate package list and push dotfiles to git
+
+# Make list of packages for re-installation
+Packages=$(pacman -Q|cut -f 1 -d " ")
+echo "$Packages" > ~/.dotfiles/packagelist.txt
+
+cd ~/.dotfiles
+git add .
+git commit -m "auto push"
+git push origin master
+
+cd ~/.scripts
+git add .
+git commit -m "auto push"
+git push origin master
+

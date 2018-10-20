@@ -1,0 +1,8 @@
+#!/bin/bash
+# Record desktop
+
+# Date format
+DATE=`date '+%Y%m%d%H%M%S'`
+
+# Record desktop
+ ffmpeg -video_size 1366x768 -framerate 25 -f x11grab -i :0.0 screencapturei_$DATE.mp4

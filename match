@@ -1,0 +1,6 @@
+#!/bin/bash
+# Re-arrange csv data
+ file1=$PWD/thing.csv
+ file2=$PWD/date_list.csv
+
+ awk 'NR==FNR{a[$1]=$2 $3 $4 $5 $6 $7 ;next}{print $0","a[$1];}' FS="," $file1 $file2

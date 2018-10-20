@@ -1,0 +1,4 @@
+#!/bin/bash
+# Make list of packages for re-installation
+Packages=$(yaourt -Q | awk -F "/" '{ print $2 }' | awk -F " " '{print $1}')
+echo "$Packages" > ~/.dotfiles/packagelist.txt

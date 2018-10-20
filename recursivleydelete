@@ -1,0 +1,3 @@
+#!/bin/bash
+# Recursivley delete specified file type
+find . -name "*.$1" -delete

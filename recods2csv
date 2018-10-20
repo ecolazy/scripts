@@ -1,0 +1,3 @@
+#!/bin/bash
+# Recursivley convert ods to csv
+find . -iname '*.ods' -execdir  libreoffice --convert-to csv {} +

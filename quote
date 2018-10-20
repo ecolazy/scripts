@@ -1,0 +1,298 @@
+#!/bin/bash
+# Quote Generator
+
+      # Quote Details
+        read -p "Enter Project: "  Project
+        quoteDate=$(date '+%d %B %Y')
+        dueDate=$(date --date="15 day" '+%d %B %Y')
+        read -p "Enter quote number: "  quoteNumber
+
+      # Supplier Details
+        supplierName='R O Forster'
+        supplierHouse='Marsden House'
+        supplierStreet='Horsley Hill'
+        supplierPostcode='GL6 0PW'
+        supplierEmail='rofor@pm.me'
+        supplierContactNumber='07847 035110'
+
+      # Customer Details
+        read -p "Customer name: "  customerName
+        read -p "Customer house: "  customerHouse
+        read -p "Customer street: "  customerStreet
+        read -p "Customer postcode: "  customerPostcode
+        read -p "Customer email: "  customerEmail
+        read -p "Customer contact number: "  customerContactNumber
+
+      # Wage Details
+        read -p "Enter wall length: "  wallLength
+        read -p "Enter wall height: "  wallHeight
+        read -p "Enter meter rate: "  meterRate
+        squareMeters=$(echo "$wallHeight * $wallLength" | bc -l )
+        wallingPrice=$(echo "$squareMeters * $meterRate" | bc -l )
+        read -p "Enter number of days labour: "  labourDays
+        read -p "Enter labour day rate: "  labourRate
+        labourPrice=$(echo "$labourDays * $labourRate" | bc -l )
+                Total=$(echo "$labourPrice + $wallingPrice" | bc -l )
+
+      # Payment Details
+
+        agreedPaymentTerms='15 days'
+        accountName='R O FORSTER'
+        accountSortCode='16-58-10'
+        accountNumber='20811195'
+
+# Define the template
+cat  << EOF >  Dry_StoneWall_Quote_No_$quoteNumber.html
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>A simple, clean, and responsive HTML quote template</title>
+
+    <style>
+    .quote-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+
+.what {
+  font-size: 30px;
+  line-height: 45px;
+  color: #333;
+  text-align: left;
+}
+
+    .quote-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+
+    .quote-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+
+    .quote-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+
+    .quote-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+
+    .quote-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+
+    .quote-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+
+    .quote-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    .quote-box table tr.details td {
+        padding-bottom: 20px;
+    }
+
+    .quote-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+
+    .quote-box table tr.item.last td {
+        border-bottom: none;
+    }
+
+    .quote-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .quote-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .quote-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+        text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="quote-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                             R O Forster
+                            </td>
+
+                            <td>
+                                Quote #: $quoteNumber<br>
+                                Created: $quoteDate<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+<td class="what" >
+Quote
+</td>
+
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                $supplierName<br>
+                                $supplierHouse<br>
+                                $supplierStreet<br>
+                                $supplierPostcode<br>
+                                $supplierContactNumber<br>
+                                $supplierEmail
+                            </td>
+
+                            <td>
+                                $customerName<br>
+                                $customerHouse<br>
+                                $customerStreet<br>
+                                $customerPostcode<br>
+                                $customerContactNumber<br>
+                                $customerEmail
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+
+
+            <tr class="heading">
+                <td>
+                    Item
+                </td>
+
+                <td>
+                    Price
+                </td>
+            </tr>
+
+            <tr class="item">
+                <td>
+                    $Project , $squareMeters m2 ($wallLength m by $wallHeight m) @ £$meterRate/m
+                </td>
+
+                <td>
+                    £$wallingPrice
+                </td>
+            </tr>
+
+            <tr class="item">
+                <td>
+                    $labourDays days labour @ £$labourRate/day
+                </td>
+
+                <td>
+                    £$labourPrice
+                </td>
+            </tr>
+
+
+            <tr class="total">
+                <td></td>
+
+                <td>
+                   Total: £$Total
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+EOF
+
+wkhtmltopdf  Dry_StoneWall_Quote_No_$quoteNumber.html  Dry_StoneWall_Quote_No_$quoteNumber.pdf
+rm quote_$quoteNumber.html
+
+cat  << EOF > Dry_StoneWall_Quote_No_$quoteNumber.sh
+
+#!/bin/bash
+
+# Quote Details
+  Project='$Project'
+  invoiceNumber=$quoteNumber
+
+# Supplier Details
+  supplierName='$supplierName'
+  supplierHouse='$supplierHouse'
+  supplierStreet='$supplierStreet'
+  supplierPostcode='$supplierPostcode'
+  supplierEmail='$supplierEmail'
+  supplierContactNumber='$supplierContactNumber'
+
+# Customer Details
+  customerName='$customerName'
+  customerHouse='$customerHouse'
+  customerStreet='$customerStreet'
+  customerPostcode='$customerPostcode'
+  customerEmail='$customerEmail'
+  customerContactNumber='$customerContactNumber'
+
+# Wage Details
+  wallLength=$wallLength
+  wallHeight=$wallHeight
+  meterRate=$meterRate
+  squareMeters=$squareMeters
+  wallingPrice=$wallingPrice
+  labourDays=$labourDays
+  labourRate=$labourRate
+  labourPrice=$labourPrice
+  Total=$Total
+
+# Payment Details
+
+  agreedPaymentTerms='$agreedPaymentTerms'
+  accountName='$accountName'
+  accountSortCode='$accountSortCode'
+  accountNumber='$accountNumber'
+
+EOF

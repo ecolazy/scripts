@@ -1,0 +1,10 @@
+#!/bin/bash
+# Make portfolio
+
+# Assign current date to invoiceDate
+Date=$(date '+%Y%m%d%H%M%S')
+
+# Convert all jpg to a pdf
+convert *.jpg outfile.pdf
+pdfjam --paper a4paper --outfile outfile.pdf Portfolio_$Date.pdf
+rm $PWD/outfile.pdf

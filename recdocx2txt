@@ -1,0 +1,3 @@
+#!/bin/bash
+# Recursivley convert osd to csv
+find . -iname '*.docx' -exec  libreoffice --convert-to txt {} +

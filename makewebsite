@@ -1,0 +1,4 @@
+#!/bin/bash
+# Generate website;
+echo "Generating static website";
+perl ~/.cpan/build/Photography-Website-0.27-0/bin/photog $HOME/Ready/Website/$1;

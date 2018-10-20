@@ -1,0 +1,4 @@
+#!/bin/bash
+# General purpose document conversion
+
+  libreoffice --convert-to $1  $2

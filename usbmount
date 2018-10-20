@@ -1,0 +1,5 @@
+#!/bin/bash
+# This mounts a usb flash drive
+
+cryptsetup luksOpen /dev/$1 thing
+mount /dev/mapper/thing /mnt

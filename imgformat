@@ -1,0 +1,4 @@
+#!/bin/bash
+# General purpose img conversion
+
+mogrify -format  $1 $2

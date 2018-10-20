@@ -1,0 +1,10 @@
+#!/bin/bash
+# This is a test of vim excute on exit
+test=$(date $c)
+
+function test {
+exec vim
+echo $test
+}
+
+test
