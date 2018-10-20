@@ -6,12 +6,12 @@ Packages=$(pacman -Q|cut -f 1 -d " ")
 echo "$Packages" > ~/.dotfiles/packagelist.txt
 
 cd ~/.dotfiles
-git add .
+git add -A .
 git commit -m "auto push"
 git push origin master
 
 cd ~/.scripts
-git add .
+git add -A .
 git commit -m "auto push"
 git push origin master
 
