@@ -1,0 +1,5 @@
+#!/bin/bash
+
+Date=$(date '+%Y%m%d%H%M%S')
+
+scanimage --device "epson2:libusb:001:011" --resolution 300 --mode color --format=tiff > ~/HOP-Processing/tiff/$Date.tiff

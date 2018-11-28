@@ -1,0 +1,4 @@
+#!/bin/bash
+Date=$(date '+%Y%m%d%H%M%S')
+mkdir txt$Date
+for f in *.tiff;do tesseract -l eng "$f" txt$Date/"$(basename "$f" .tiff)";done

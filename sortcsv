@@ -1,0 +1,16 @@
+#1/bin/bash
+# Sort CSV by Nth column
+
+
+
+# Sort
+{
+
+	# Grab header, and print untouched
+    IFS= read -r header
+    echo "$header"
+    # Now process the rest of the input
+    sort -t, -k$2 $1
+} < $1
+
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+# Make purchase-order
+
+# Assign current date to purchase-orderDate
+Date=$(date '+%Y%m%d%H%M%S')
+
+# Copy template
+cp $HOME/Processing/Template/Template_purchase-order.yml $HOME/Processing/Purchase_Order/Purchase_Order_$Date.yml
+
+# Insert date into file
+ sed -i '2ipurchase-order-nr\:\ '$Date $HOME/Processing/Purchase_Order/Purchase_Order_$Date.yml
+
+# Open file in text editor
+vim $HOME/Processing/Purchase_Order/Purchase_Order_$Date.yml
+
